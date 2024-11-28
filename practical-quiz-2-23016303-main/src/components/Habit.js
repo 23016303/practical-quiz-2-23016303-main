@@ -8,10 +8,15 @@ import React from "react";
  */
 export default function Habit({habit, onToggleHabit, onDeleteHabit}) {
     return (
-        <div>
-        <input type="checkbox" checked={habit.completed} onChange={() => onToggleHabit(habit.id)} />
-        <span>{habit.name}</span>
-        <button onClick={() => onDeleteHabit(habit.id)}>Delete</button>
+        <li key={habit.id}>
+            <div>
+                <input type="checkbox" checked={habit.completed} onChange={() => onToggleHabit(habit.id)} />
+                <span
+          style={{
+            textDecoration: habit.completed ? "line-through" : "none", // Strike-through if completed
+          }}>{habit.name}</span>
+        <button onClick={() => onDeleteHabit(habit.id)}>❌</button>
         </div>
+        </li>
     );
 }
